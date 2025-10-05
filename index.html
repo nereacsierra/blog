@@ -4,36 +4,36 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Blog de Robótica Móvil</title>
-  <style>
-    body {
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-      background: linear-gradient(135deg, #f6f8ff, #e8f3ff);
-      color: #0b2545;
-    }
-    .card {
-      text-align: center;
-      padding: 36px;
-      border-radius: 12px;
-      box-shadow: 0 8px 24px rgba(11,37,69,0.08);
-      background: white;
-      max-width: 720px;
-    }
-    h1 { margin: 0 0 12px; font-size: 2.2rem; }
-    p { margin: 0; color: #334155; }
-    small { display: block; margin-top: 10px; color: #6b7280; }
-  </style>
+  <link rel="stylesheet" href="style.css">
+  
 </head>
 <body>
-  <div class="card">
+  <header>
     <h1>Blog de Robótica Móvil</h1>
-    <p>Practica 1.</p>
-    <small>Vacuum cleaner</small>
-  </div>
+  </header>
+    
+    <nav class="list">
+      <h2>Prácticas</h2>
+      <ul> 
+        <li><a href="#practica1">Práctica 1: Vacum cleaner</a></li>
+      </ul>
+    </nav>
+    <main>
+    <section class="articles">
+      <h2 id="practica1">Práctica 1.</h2>
+      <h3>Vacuum cleaner</h3>
+      <p>
+        En esta práctica he  programado un autómata que realiza una navegación pseudoaleatoria. 
+    </p><p>Para esto he utilizado 3 estados: avanzando, retrocediendo y girando, que se van ejecutando dentro de un bucle infinito.
+    </p><p>El autómata comienza en el estado "avanzando", en el cual avanza recto hasta chocarse con algo. Cuando el bumper detecta el choque el estado pasa a ser "retrocediendo".
+  </p><p>En el estado retrocediendo el autómata retrocede en línea recta durante 1.5 segundos. Cuando con los timers detecto que el tiempo establecido ha pasado, el autómata pasa al estado "girando" en el que gira aleatoriamente.
+  </p><p>Para decidir el giro he utilizado el módulo random, escogiendo el tiempo de giro aleatoriamente de entre 0.0 y pi segundos (gira a una velocidad de 1 radián por segundo por lo que pi segundos sería media vuelta) y también se establece de manera aleatoria el sentido del giro. Cuando se cumple el tiempo establecido de giro, se vuelve al estado "avanzando"otra vez, continuando asi el bucle.
+  </p><p>Aqui dejo un video en cámara rápida de la solución:</p>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/RzA3VxyKwrQ?si=PvOhARSjQCfKyzks" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </section>
+    </main>
+
+  
 
   <script>
     // Ejemplo mínimo de interacción: muestra la fecha al hacer clic en el título
