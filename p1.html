@@ -1,1 +1,45 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Blog de Robótica Móvil</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+  <header>
+    <h1>Blog de Robótica Móvil</h1>
+  </header>
+    
+    <nav class="list">
+      <h2>Prácticas</h2>
+      <ul> 
+        <li><a href="#practica1">Práctica 1: Vacum cleaner</a></li>
+      </ul>
+    </nav>
+    <main>
+    <section class="articles">
+      <h2 id="practica1">Práctica 1.</h2>
+      <h3>Vacuum cleaner</h3>
+      <p>
+        En esta práctica he  programado un autómata que realiza una navegación pseudoaleatoria. 
+    </p><p>Para esto he utilizado 3 estados: avanzando, retrocediendo y girando, que se van ejecutando dentro de un bucle infinito.
+    </p><p>El autómata comienza en el estado "avanzando", en el cual avanza recto hasta chocarse con algo. Cuando el bumper detecta el choque el estado pasa a ser "retrocediendo".
+  </p><p>En el estado retrocediendo el autómata retrocede en línea recta durante 1.5 segundos. Cuando con los timers detecto que el tiempo establecido ha pasado, el autómata pasa al estado "girando" en el que gira aleatoriamente.
+  </p><p>Para decidir el giro he utilizado el módulo random, escogiendo el tiempo de giro aleatoriamente de entre 0.0 y pi segundos (gira a una velocidad de 1 radián por segundo por lo que pi segundos sería media vuelta) y también se establece de manera aleatoria el sentido del giro. Cuando se cumple el tiempo establecido de giro, se vuelve al estado "avanzando"otra vez, continuando asi el bucle.
+  </p><p>Aqui dejo un video en cámara rápida de la solución:</p>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/RzA3VxyKwrQ?si=PvOhARSjQCfKyzks" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </section>
+    </main>
 
+  
+
+  <script>
+    // Ejemplo mínimo de interacción: muestra la fecha al hacer clic en el título
+    document.querySelector('h1').addEventListener('click', () => {
+      alert('Hoy es: ' + new Date().toLocaleString());
+    });
+  </script>
+</body>
+</html>
