@@ -1,1 +1,38 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Practica 3</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+  <header>
+    <h1>Practica 3</h1>
+  </header>
+    
+    <nav class="list">
+      <ul> 
+        <li><a href="./index.html">Inicio</a></li>
+      </ul>
+    </nav>
+    <main>
+    <section class="articles">
+      <h2 id="practica1">Navegación local esquivando obstáculos con algoritmo VFF.</h2>
+     <p> Para este proyecto empecé por lo más esencial, construir los vectores de atracción, repulsión y el resultante. Usé los cilindros que proporciona Gazebo para ir ajustando visualmente cómo se comportaban las fuerzas.
+ </p><p>Una vez tuve los vectores funcionando (aunque más adelante los volví a ajustar), pasé a la parte del movimiento. Probé a combinar el enfoque de VFF (Vector Field Force) con el algoritmo de Dynamic Window Approach, pero no conseguía que el sistema de puntuación funcionase bien, así que descarté esa mezcla y me centré en pulir el VFF puro.
+ </p><p>Para controlar el movimiento, decidí implementar un PID para la velocidad angular (w), pero no para la velocidad lineal (v). En el caso de v, simplemente la multiplico por una constante kp, así que no es un PID completo.
+ </p><p>Fui probando distintos parámetros para ajustar el comportamiento. Por ejemplo, al aumentar beta, conseguía que el coche esquivara el obstáculo que se encuentra cerca de una pared, pasando por el otro lado de la pista, lo cual era muy útil, lo sobrepasaba con mucha más fluidez y menos oscilación que de la otra manera. Pero si subía demasiado beta, o los parámetros del PID (kpw, kdw), el coche empezaba a oscilar mucho al esquivar otros objetos y se movía a trompicones, haciendo el circuito en general más lento.
+ </p><p>Luego probé a aumentar alpha, y eso hacía que el coche se moviera mucho más rápido y fluido. Pero se chocaba con el coches que estaba pegado a la pared, pasando entre esa pared y el obstáculo y dándole un golpe justo al final de sobrepasarlo. Así que cambié de estrategia y empecé a subir kpv, lo que también mejoraba la fluidez y la velocidad, pero no influía en la orientación del vector resultante. Sin embargo, si lo subía demasiado, el coche se chocaba con los coches que se encontraba de frente (los que estaban en medio de la carretera). Así que tuve que encontrar un equilibrio.
+ </p><p>Para el vector de atracción, decidí que tuviera módulo constante de 10 mientras el robot estuviera lejos del objetivo. Pero en los últimos 5 metros, ese módulo empieza a disminuir progresivamente hasta llegar a 5 en el objetivo. Primero tenía puesto que en el objetivo fuese cero, pero frenaba mucho al llegar al objetivo y lo cambié.
+ </p><p>En cuanto al vector de repulsión, en vez de usar los 180 valores del láser, solo uso los que van de 30 a 150. Esto me permitió mejorar la situación con el coche que se encuentra cerca de la pared, disminuyendo un poco la oscilación y los giros bruscos.
+ </p><p>También puse límites en la velocidad v para que siempre fuera positiva y nunca cero. En concreto, la fijé con un mínimo de 0.5, porque si no, el coche se quedaba parado delante de algunos obstáculos o en una curva donde los vectores atractivo y repulsivo son prácticamente opuestos y el vector resultante desaparece. No la puse mayor a 0.5 porque entonces se chocaba con algunos obstáculos.
 
+  </p><p>Aqui dejo un video de la solución:</p>
+      <iframe width="487" height="865" src="https://www.youtube.com/embed/EpokZHhqFnM" title="5 de noviembre de 2025" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </section>
+    </main>
+
+</body>
+</html>
